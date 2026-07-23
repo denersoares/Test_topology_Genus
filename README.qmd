@@ -1,24 +1,77 @@
----
 format: gfm
----
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+# Análise de gêneros monofiléticos com MonoPhy
 
 ```{r}
-1 + 1
+library(here)
+library(MonoPhy)
 ```
 
-You can add options to executable code like this
+## 1. Carregar árvore e escolher grupo externo para ser enraizado
 
 ```{r}
-#| echo: false
-2 * 2
+tr <- read.tree(file = here("FigTree.tre")) #
+tr <- root(tr, outgroup = c("Struthio_camelus"), resolve.root = TRUE)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## 2. Avaliação de monofiletismo (nível de gênero)
+
+```{r}
+solution0 <- AssessMonophyly(tr)
+```
+
+## 3. Extração de informações suplementares
+
+### 3.1 Status de monofilia, Nó, espécies parafiléticas (Outliers/de fora ou Intruders/Intruso - de acordo com a taxonomia), entre outras informações padrões
+
+```{r}
+GenusLevelTable <- data.frame(GetResultMonophyly(solution0))
+ 
+colnames(GenusLevelTable) <- c('Monophyly', 'MRCA', 'Tips', 'DeltaTips', 'Intruders', 'Intruders', 'Outliers', 'Outliers') # Rename it
+```
+
+## 4. Armazenamento dos dados em uma tabela
+
+```{r}
+write.csv(x = GenusLevelTable, file = here("GenusLevelTableMixed123.csv")) 
+```
+
+## 5. Plotagem da árvore filogenetica com o monofiletismo à nível de gênero colapsado (PDF)
+
+### 5.1 Criação de um arquivo em pdf em branco
+
+```{r}
+pdffn <- here("Strisores_Monophyly_Genus_LVL.pdf") 
+pdf(pdffn, width = 35, height = 75)
+```
+
+### 5.2 Armazenamento e plotagem da árvore comparada
+
+#### 5.2.1 Monofiletismo evidenciado e táxons intrusos destacados
+
+```{r}
+# Monofiletismo Evidenciado
+PlotMonophyly(solution0, tr, main = "Monophyly Strisores", plot.type = 'monophyly',
+              tax.colour = 'black', ladderize = TRUE, cex = 0.8, label.offset = 0.8,
+              tipcex = 1.2, statecex = 0.3, splitcex = 0.3, titlecex = 2.0,
+              plotsplits = TRUE, include_null_range = TRUE)
+```
+
+#### 5.2.2 Coloração por gêneros
+
+```{r}
+
+PlotMonophyly(solution0, tr, main = "Genus Strisores", plot.type = 'taxonomy',
+              ladderize = TRUE, cex = 0.8, label.offset = 0.8, tipcex = 1.2,
+              statecex = 0.3, splitcex = 0.3, titlecex = 2.0,
+              plotsplits = TRUE, include_null_range = TRUE)
+```
+#### 5.2.3 Comparação entre os demais resultados
+```{r}
+
+PlotMonophyly(solution0, tr, plot.type = 'monoVStax', cex = 0.8, label.offset = 0.8,
+              tipcex = 1.2, statecex = 0.3, splitcex = 0.3, titlecex = 2.0,
+              plotsplits = TRUE, include_null_range = TRUE)
+ 
+dev.off()
+```
