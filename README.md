@@ -1,5 +1,3 @@
-format: gfm
-
 # Análise de gêneros monofiléticos com MonoPhy
 
 ```{r}
