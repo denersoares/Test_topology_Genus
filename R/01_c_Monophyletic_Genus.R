@@ -62,7 +62,7 @@ write.csv(x = GenusLevelTable, file = output_table_path, row.names = TRUE)
 message("Tabela salva em: ", output_table_path)
 
 # ---- 8. Visualizações em PDF ----
-pdf(output_pdf_path, width = 35, height = 75)
+pdf(output_pdf_path, width = 12, height = 14)
 
 tr$node.label <- NULL
 
@@ -74,11 +74,11 @@ PlotMonophyly(
   tax.colour = "black",
   ladderize = TRUE,
   cex = 0.8,
-  label.offset = 0.8,
-  tipcex = 1.2,
-  statecex = 0.3,
-  splitcex = 0.3,
-  titlecex = 2.0,
+  label.offset = 0.01,
+  tipcex = 1.0,
+  statecex = 0.7,
+  splitcex = 0.7,
+  titlecex = 1.2,
   plotsplits = TRUE,
   include_null_range = TRUE
 )
@@ -90,11 +90,11 @@ PlotMonophyly(
   ladderize = TRUE,
   monocoll = TRUE,
   cex = 0.8,
-  label.offset = 0.8,
-  tipcex = 1.2,
-  statecex = 0.3,
-  splitcex = 0.3,
-  titlecex = 2.0,
+  label.offset = 0.01,
+  tipcex = 1.0,
+  statecex = 0.7,
+  splitcex = 0.7,
+  titlecex = 1.2,
   plotsplits = TRUE,
   include_null_range = TRUE
 )
@@ -104,11 +104,11 @@ PlotMonophyly(
   plot.type = "monoVStax",
   monocoll = TRUE,
   cex = 0.8,
-  label.offset = 0.8,
-  tipcex = 1.2,
-  statecex = 0.3,
-  splitcex = 0.3,
-  titlecex = 2.0,
+  label.offset = 0.03,
+  tipcex = 1.0,
+  statecex = 0.7,
+  splitcex = 0.7,
+  titlecex = 1.2,
   plotsplits = TRUE,
   include_null_range = TRUE
 )
