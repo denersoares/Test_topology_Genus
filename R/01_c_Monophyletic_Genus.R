@@ -62,6 +62,19 @@ write.csv(x = GenusLevelTable, file = output_table_path, row.names = TRUE)
 message("Tabela salva em: ", output_table_path)
 
 # ---- 8. Visualizações em PDF ----
+# ---- Descrição dos parâmetros de PlotMonophyly() ---- 
+# Ajuste  com base na melhor visualização de seus dados!
+# plot.type          : tipo de gráfico — "monoVStax" compara monofiletismo lado a lado com a taxonomia atribuída
+# monocoll           : colapsa (agrupa visualmente) clados monofiléticos em um único ramo/ponta
+# cex                : tamanho geral do texto dos rótulos das pontas (tips)
+# label.offset       : distância entre a ponta do ramo e o início do texto do rótulo
+# tipcex             : tamanho dos símbolos (quadrados/pontos) marcando as pontas da árvore
+# statecex           : tamanho do texto que indica o estado/status (mono, parafilético etc.)
+# splitcex           : tamanho do texto nos pontos onde a taxonomia se divide (splits)
+# titlecex           : tamanho do texto do título do gráfico
+# plotsplits         : exibe visualmente os pontos de divisão/quebra entre táxons
+# include_null_range : inclui na visualização táxons sem intervalo/range definido, em vez de omiti-los
+
 pdf(output_pdf_path, width = 12, height = 14)
 
 tr$node.label <- NULL
