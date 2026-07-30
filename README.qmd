@@ -14,6 +14,8 @@ ocorrências de parafiletismo.
   exemplo de um grupo de aves.
 - **`01_c_Monophyletic_Genus.R`**: script em R para realizar a análise 
   de topologia.
+  - **`output/GenusLevelTable.csv`**: Tabela contendo as informações sobre cada gênero e seu status de monofiletismo.
+- **`output/Strisores_Monophyly_Genus_LVL.pdf`**: Topologia gerada em formato pdf, contendo clados colapsados e também destacadas os que são parafiléticos.
 
 ### Convenção de nomenclatura do script
 O prefixo do nome segue o padrão `NN_X_Descrição`:
