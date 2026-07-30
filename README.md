@@ -1,3 +1,41 @@
+# Teste de Topologia para Checar o Monofiletismo a Nível de Gênero
+
+Este repositório contém um arquivo em formato Newick (pasta `data/raw`) e um 
+script em R que introduz o usuário à manipulação inicial de uma topologia 
+filogenética, permitindo visualizar gêneros monofiléticos e identificar 
+ocorrências de parafiletismo.
+## Arquivos
+
+- **`Figtree.tree`**: árvore filogenética em formato Newick, usada como 
+  exemplo de um grupo de aves.
+- **`01_c_Monophyletic_Genus.R`**: script em R para realizar a análise 
+  de topologia.
+
+### Convenção de nomenclatura do script
+O prefixo do nome segue o padrão `NN_X_Descrição`:
+- `01`: número sequencial do script (primeiro da série)
+- `c`: etapa do processo — *collapsing/cleaning topology* (colapsar/limpar a topologia)
+
+## Dependências
+
+Este script utiliza as seguintes bibliotecas do R:
+
+```r
+install.packages(c("ape", "phytools", "ggtree"))
+```
+
+- **`ape`**: leitura e manipulação de árvores filogenéticas em formato Newick.
+- **`phytools`**: funções auxiliares para análise e visualização de topologias.
+- **`ggtree`**: visualização gráfica da árvore, incluindo destaque de clados monofiléticos/parafiléticos.
+
+## Como usar
+
+1. Clone este repositório.
+2. Abra o script `01_c_Monophyletic_Genus.R` no RStudio (ou outro ambiente R de sua preferência).
+3. Certifique-se de que o arquivo `Figtree.tree` está na pasta `data/raw`.
+4. Execute o script linha por linha ou de uma vez (`source("01_c_Monophyletic_Genus.R")`).
+5. O script irá gerar uma visualização da árvore com os gêneros monofiléticos destacados, além de um relatório indicando quais gêneros apresentam parafiletismo.
+
 # Análise de gêneros monofiléticos com MonoPhy
 
 ```{r}
